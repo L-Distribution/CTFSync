@@ -12,9 +12,12 @@
   max-width: 600px;
 }
 
-.chalName {}
-.chalValue {}
-.claimedBy {}
+.chalName {
+}
+.chalValue {
+}
+.claimedBy {
+}
 
 .chalHeader {
   display: flex;
@@ -28,6 +31,5 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   margin-top: auto;
 }

@@ -4,16 +4,16 @@
   height: 64px;
   background-color: $color-1dp;
   box-shadow: $shadow-1dp;
-
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 .siteName {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.75em;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .menuIcon {
