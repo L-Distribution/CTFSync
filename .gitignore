@@ -1,7 +1,12 @@
+# Node/framework
 node_modules/
+.next/
+
+# Project specific
+config/*
+
+# Annoying files people keep leaving around
 .idea/
 yarn-error.log
-tmp/
 .DS_Store
 */.DS_Store
-config/*

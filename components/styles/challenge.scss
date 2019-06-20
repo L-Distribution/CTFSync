@@ -1,0 +1,31 @@
+@import "./_theme.scss";
+
+.chalCard {
+  background-color: $color-1dp;
+  box-shadow: $shadow-1dp;
+  padding: 16px;
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.chalName {}
+.chalValue {}
+.claimedBy {}
+
+.chalHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chalFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: auto;
+}
