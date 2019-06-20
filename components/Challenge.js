@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 
-import {ThemeProvider} from "@rmwc/theme"
 import { Button } from "@rmwc/button"
 import {Dialog, DialogTitle, DialogActions, DialogButton, DialogContent} from "@rmwc/dialog"
 
