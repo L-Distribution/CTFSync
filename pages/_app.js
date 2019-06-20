@@ -24,9 +24,13 @@ class CustomApp extends App {
       <ThemeProvider
         options={{
           primary: '#2adaff',
+          primaryBg: '#2adaff',
           secondary: '#00e99e',
+          secondaryBg: '#00e99e',
           onPrimary: 'rgba(0, 0, 0, 0.95)',
-          textPrimaryOnBackground: 'white'
+          textPrimaryOnBackground: 'white',
+          background: "#121212",
+          surface: "#121212"
         }}
       >
         <Container>

@@ -46,7 +46,11 @@ function Challenges() {
       value: 488,
       state: 'visible',
       type: 'dynamic',
-      max_attempts: 0
+      max_attempts: 0,
+      netcat: {
+        host: "crypto.hsctf.com",
+        port: 8113
+      }
     },
     { files:
         [ '/files/85776fff1bc69cb5b2367fb7143a8166/BiteCode.class?token=eyJ0ZWFtX2lkIjo0OCwidXNlcl9pZCI6MTE3LCJmaWxlX2lkIjo1M30.XQoqgQ.OsstdoThP1SByL0vGs0QM_EKmKk' ],
