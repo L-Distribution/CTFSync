@@ -46,7 +46,7 @@ function Challenge(props) {
         setDetailsOpen(false);
       }}
     >
-      <DialogContent theme={["primary", "onSurface"]}>
+      <DialogContent theme={["onSurface"]}>
         <div className={css.chalHeader}>
           <h1 className={css.chalName}>
             {props.chal.name}

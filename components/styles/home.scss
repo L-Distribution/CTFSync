@@ -69,3 +69,7 @@
   text-align: center;
   width: 180px;
 }
+
+:global(.mdc-text-field--focused):not(.mdc-text-field--disabled) :global(.mdc-floating-label) {
+  color: white !important;
+}

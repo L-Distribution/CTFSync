@@ -8,8 +8,6 @@ import LogoIcon from "../static/svg/ldistlong.svg";
 import { Button } from "@rmwc/button";
 import "@material/button/dist/mdc.button.css";
 
-import { ThemeProvider } from "@rmwc/theme";
-
 import { TextField } from "@rmwc/textfield";
 import "@material/textfield/dist/mdc.textfield.css";
 import "@material/floating-label/dist/mdc.floating-label.css";
@@ -18,9 +16,7 @@ import "@material/line-ripple/dist/mdc.line-ripple.css";
 
 function Footer() {
   const [email, setEmail] = useState("");
-  const [regex, setRegex] = useState(
-    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-  );
+  const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
   return (
     <>
       <footer className={css.footer}>

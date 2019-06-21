@@ -3,16 +3,36 @@ import App, { Container } from "next/app";
 
 import { ThemeProvider } from "@rmwc/theme";
 
+import firebase from 'firebase'
+
 import "../components/styles/normalize.css";
 import "../components/styles/global.scss";
 import "@material/theme/dist/mdc.theme.css";
 
 class CustomApp extends App {
+  constructor () {
+    super();
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDSI1FPM8ePwo-kJHcNCl034KVLj55YBd8",
+      authDomain: "ctf-sync.firebaseapp.com",
+      databaseURL: "https://ctf-sync.firebaseio.com",
+      projectId: "ctf-sync",
+      storageBucket: "ctf-sync.appspot.com",
+      messagingSenderId: "752216929934",
+      appId: "1:752216929934:web:7480e990d39c873f"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+  }
+
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
+      pageProps = Object.assign({}, pageProps, await Component.getInitialProps(ctx));
     }
 
     return { pageProps };
@@ -29,6 +49,7 @@ class CustomApp extends App {
           secondary: "#00e99e",
           secondaryBg: "#00e99e",
           onPrimary: "rgba(0, 0, 0, 0.95)",
+          onSurface: "#ffffff",
           textPrimaryOnBackground: "white",
           textDisabledOnBackground: "green",
           background: "#121212",

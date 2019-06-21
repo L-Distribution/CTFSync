@@ -3,3 +3,32 @@
 .pageContent {
   padding: 16px;
 }
+
+.header {
+  height: 64px;
+  background-color: $color-1dp;
+  box-shadow: $shadow-1dp;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.siteName {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.75em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.menuIcon {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+:global(.mdc-drawer) {
+  background-color: var(--mdc-theme-background);
+
+  :global(.mdc-drawer__title), :global(.mdc-list-item) {
+    color: var(--mdc-theme-on-surface);
+  }
+}

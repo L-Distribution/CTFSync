@@ -7,8 +7,8 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
  response.send("Hello from Firebase!");
 });
 
-exports.scrapeChals = functions.database.ref('/ctf/{ctfId}').onWrite(change => {
-  const ctf = change.after.val()
+exports.scrapeChals = functions.firestore.document('/ctfs/{ctfId}').onCreate((snap, context) => {
+  const newValue = snap.data();
 
-  console.log(ctf)
+  console.log(newValue)
 });
