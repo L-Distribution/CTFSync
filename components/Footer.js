@@ -84,6 +84,7 @@ function Footer() {
             ripple={{ accent: true }}
             onClick={() => {
               if (email != "" && regex.test(email)) {
+                //change here to send email
                 console.log(email);
               }
             }}
