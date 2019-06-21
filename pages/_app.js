@@ -2,11 +2,11 @@ import React from "react";
 import App, { Container } from "next/app";
 
 import { ThemeProvider } from "@rmwc/theme";
+import "normalize.css";
 
 import firebase from 'firebase'
 
-import "../components/styles/normalize.css";
-import "../components/styles/global.scss";
+import "../styles/global.scss";
 import "@material/theme/dist/mdc.theme.css";
 
 class CustomApp extends App {

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import AuthedPage from "../components/AuthedPage";
 import Challenge from "../components/Challenge"
 
-import css from "../components/styles/challenges.scss"
+import css from "./styles/challenges.scss"
 
 function Challenges() {
   const chals = [
