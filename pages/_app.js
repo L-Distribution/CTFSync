@@ -30,6 +30,7 @@ class CustomApp extends App {
           secondaryBg: "#00e99e",
           onPrimary: "rgba(0, 0, 0, 0.95)",
           textPrimaryOnBackground: "white",
+          textDisabledOnBackground: "green",
           background: "#121212",
           surface: "#121212"
         }}

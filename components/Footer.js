@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Link from "next/link";
 
@@ -10,21 +10,40 @@ import "@material/button/dist/mdc.button.css";
 
 import { ThemeProvider } from "@rmwc/theme";
 
-import TextField, { Input } from "@material/react-text-field";
-import "@material/react-text-field/dist/text-field.css";
+import { TextField } from "@rmwc/textfield";
+import "@material/textfield/dist/mdc.textfield.css";
+import "@material/floating-label/dist/mdc.floating-label.css";
+import "@material/notched-outline/dist/mdc.notched-outline.css";
+import "@material/line-ripple/dist/mdc.line-ripple.css";
 
 function Footer() {
+  const [email, setEmail] = useState("");
+  const [regex, setRegex] = useState(
+    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+  );
   return (
     <>
       <footer className={css.footer}>
         <img src="/static/images/flag.png" alt="flag logo" className={css.flagLogo} />
         <div>
-          <Link href="/">Home</Link>
-          <Link href="/">Profile</Link>
-          <Link href="/">About</Link>
-          <Link href="/">Challenges</Link>
-          <Link href="/">Team</Link>
-          <Link href="/">Privacy</Link>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+          <Link href="/">
+            <a>Profile</a>
+          </Link>
+          <Link href="/">
+            <a>About</a>
+          </Link>
+          <Link href="/">
+            <a>Challenges</a>
+          </Link>
+          <Link href="/">
+            <a>Team</a>
+          </Link>
+          <Link href="/">
+            <a>Privacy</a>
+          </Link>
         </div>
         <div>
           <div>Contact Us</div>
@@ -46,15 +65,29 @@ function Footer() {
         </div>
         <div>
           <div>Stay Updated</div>
+
           <TextField
             label="Email"
-            theme={["secondaryBg", "onSecondary"]}
+            theme={["primary", "textPrimaryOnBackground"]}
             outlined
-            floatingLabelClassName={css.emailInput}
+            required
+            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+            value={email}
+            onChange={e => {
+              setEmail(e.target.value);
+            }}
+          />
+
+          <Button
+            raised
+            theme={["secondaryBg", "onSecondary"]}
+            ripple={{ accent: true }}
+            onClick={() => {
+              if (email != "" && regex.test(email)) {
+                console.log(email);
+              }
+            }}
           >
-            <Input theme={["secondaryBg", "onSecondary"]} />
-          </TextField>
-          <Button raised theme={["secondaryBg", "onSecondary"]} ripple={{ accent: true }}>
             Subscribe
           </Button>
         </div>
@@ -63,7 +96,7 @@ function Footer() {
         <div className={css.siteName}>CTFSync</div>
         <div className={css.logoWrap}>
           <div>Created with ❤ by</div>
-          <a href="https://github.com/L-Distribution" target="_blank" rel="noopener noreferrer">
+          <a href="ldist.io" target="_blank" rel="noopener noreferrer">
             <LogoIcon className={css.logoIcon} />
           </a>
         </div>
