@@ -14,6 +14,7 @@
   "dependencies": {
     "@rmwc/button": "^5.5.2",
     "@rmwc/dialog": "^5.5.2",
+    "@rmwc/textfield": "^5.5.2",
     "@rmwc/theme": "^5.5.2",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
@@ -23,6 +24,7 @@
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-markdown": "^4.0.8"
+    "react-markdown": "^4.0.8",
+    "webpack": "^4.35.0"
   }
 }

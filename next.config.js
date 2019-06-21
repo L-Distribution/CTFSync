@@ -1,8 +1,6 @@
 const withSass = require('@zeit/next-sass')
 const withOffline = require('next-offline')
 
-const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
-
 module.exports = module.exports = withOffline(withSass({
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (!defaultLoaders) {
@@ -11,27 +9,27 @@ module.exports = module.exports = withOffline(withSass({
       )
     }
 
-    defaultLoaders.css = cssLoaderConfig(config, {
-      extensions: ['css'],
-      cssModules: false,
-      cssLoaderOptions: {},
-      postcssLoaderOptions: {},
-      dev,
-      isServer
-    })
+      defaultLoaders.css = cssLoaderConfig(config, {
+        extensions: ["css"],
+        cssModules: false,
+        cssLoaderOptions: {},
+        postcssLoaderOptions: {},
+        dev,
+        isServer
+      });
 
-    config.module.rules.push({
-      test: /\.css$/,
-      issuer(issuer) {
-        if (issuer.match(/pages[\\/]_document\.js$/)) {
-          throw new Error(
-            'You can not import CSS files in pages/_document.js, use pages/_app.js instead.'
-          )
-        }
-        return true
-      },
-      use: defaultLoaders.css
-    })
+      config.module.rules.push({
+        test: /\.css$/,
+        issuer(issuer) {
+          if (issuer.match(/pages[\\/]_document\.js$/)) {
+            throw new Error(
+              "You can not import CSS files in pages/_document.js, use pages/_app.js instead."
+            );
+          }
+          return true;
+        },
+        use: defaultLoaders.css
+      });
 
     return config
   },
