@@ -1,16 +1,26 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap");
-
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../../static/webfonts/fa-solid-900.ttf") format("truetype");
+}
 body {
   font-family: "Roboto", sans-serif;
   color: white;
   fill: currentColor;
   background-color: #121212;
   margin: 0;
-  font-size: 62.5%;
 }
 
 h1,
 h2,
 h3 {
   margin: 0;
+}
+
+.fa,
+.fas {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }

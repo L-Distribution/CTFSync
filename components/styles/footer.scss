@@ -1,0 +1,96 @@
+@import "./_theme.scss";
+
+.footer {
+  height: 15rem;
+  background-color: $color-1dp;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+.footerBottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $color-1dp;
+  justify-content: space-between;
+  padding: 1rem 2rem 1rem 2rem;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    background: darken(white, 70%);
+    width: 90%;
+    height: 1.5px;
+    top: 0;
+    left: 50%;
+    margin-left: -45%;
+  }
+}
+
+.flagLogo {
+  height: 150px;
+}
+.siteName {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
+.logoIcon {
+  margin-left: 1rem;
+  height: 70px;
+  width: 200px;
+  cursor: pointer;
+}
+.logoWrap {
+  display: flex;
+  align-items: center;
+  color: darken(white, 70%);
+}
+
+.mail {
+  &:before {
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f0e0";
+    font-weight: 900;
+    margin-right: 2rem;
+    margin-right: 1rem;
+  }
+}
+.phone {
+  &:before {
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f095";
+    font-weight: 900;
+    margin-right: 1rem;
+  }
+}
+.location {
+  &:before {
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f279";
+    font-weight: 900;
+    margin-right: 1rem;
+  }
+}
+
+.emailInput {
+  &:hover {
+    color: green !important;
+  }
+
+  color: white !important;
+}

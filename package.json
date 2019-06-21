@@ -11,6 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material/react-text-field": "^0.13.0",
     "@rmwc/button": "^5.5.2",
     "@rmwc/dialog": "^5.5.2",
     "@rmwc/theme": "^5.5.2",
@@ -18,9 +19,11 @@
     "@zeit/next-sass": "^1.0.1",
     "babel-plugin-inline-react-svg": "^1.1.0",
     "next": "^8.1.0",
+    "next-fonts": "^0.17.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-markdown": "^4.0.8"
+    "react-markdown": "^4.0.8",
+    "webpack": "^4.35.0"
   }
 }
