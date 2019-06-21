@@ -13,6 +13,8 @@ import '@material/icon-button/dist/mdc.icon-button.css';
 import css from "./styles/authedPage.scss"
 import MenuIcon from "./icons/material-icons/menu.svg";
 
+import firebase from 'firebase'
+
 function AuthedPage(props) {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
