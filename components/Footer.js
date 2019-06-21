@@ -97,7 +97,7 @@ function Footer() {
         <div className={css.siteName}>CTFSync</div>
         <div className={css.logoWrap}>
           <div>Created with ❤ by</div>
-          <a href="ldist.io" target="_blank" rel="noopener noreferrer">
+          <a href="https://ldist.io" target="_blank" rel="noopener noreferrer">
             <LogoIcon className={css.logoIcon} />
           </a>
         </div>
