@@ -17,7 +17,7 @@ function Index() {
             <div className={css.gSignInButton}>
               <div className={css.contentWrapper}>
                 <div className={css.logoWrapper}>
-                  <img src="https://developers.google.com/identity/images/g-logo.png" />
+                  <img src="/static/images/g-logo.png"  alt={"Google logo"}/>
                 </div>
                 <span className={css.textContainer}>
                   <span>Sign in with Google</span>
