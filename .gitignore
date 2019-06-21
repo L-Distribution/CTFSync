@@ -1,6 +1,7 @@
 # Node/framework
 node_modules/
 .next/
+out/
 
 # Project specific
 config/*

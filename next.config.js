@@ -1,9 +1,9 @@
 const withSass = require('@zeit/next-sass')
-const withCSS = require('@zeit/next-css')
+const withOffline = require('next-offline')
 
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 
-module.exports = module.exports = withSass({
+module.exports = module.exports = withOffline(withSass({
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (!defaultLoaders) {
       throw new Error(
@@ -40,4 +40,4 @@ module.exports = module.exports = withSass({
     importLoaders: 1,
     localIdentName: "[local]___[hash:base64:5]",
   }
-})
+}))
