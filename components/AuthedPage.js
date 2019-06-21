@@ -15,7 +15,6 @@ import MenuIcon from "./icons/material-icons/menu.svg";
 
 function AuthedPage(props) {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  console.log(props)
 
   return (<>
     <Drawer modal open={drawerOpen} onClose={() => setDrawerOpen(false)} theme={["surface"]}>
