@@ -2,12 +2,21 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 
 import { Button } from "@rmwc/button"
-import {Dialog, DialogTitle, DialogActions, DialogButton, DialogContent} from "@rmwc/dialog"
+import {Dialog, DialogActions, DialogButton, DialogContent} from "@rmwc/dialog"
 
 import '@material/dialog/dist/mdc.dialog.css'
 import '@material/button/dist/mdc.button.css'
 
 import css from "./styles/challenge.scss"
+
+import DownloadIcon from "./icons/material-icons/cloudDownload.svg"
+
+function File(props) {
+  return (<div className={css.file}>
+    <h2>{props.file.filename}</h2>
+    <DownloadIcon/>
+  </div>)
+}
 
 function Challenge(props) {
   const [detailsOpen, setDetailsOpen] = React.useState(false)
@@ -21,6 +30,15 @@ function Challenge(props) {
     <pre>nc {props.chal.netcat.host} {props.chal.netcat.port}</pre>
   </>) : <></>
 
+  const files = props.chal.files ? (<>
+    <h3>Files</h3>
+    {props.chal.files.map((f, i) => <File file={f} key={i}/>)}
+  </>) : <></>
+
+  const actionButton = (props.chal.claimedBy || []).includes("yang") ?
+    <Button raised ripple={{accent: true}}>Add Notes</Button> :
+    <Button raised ripple={{accent: true}}>Claim</Button>
+
   return (<>
     <Dialog
       open={detailsOpen}
@@ -28,15 +46,22 @@ function Challenge(props) {
         setDetailsOpen(false);
       }}
     >
-      <DialogTitle theme={["primary", "onSurface"]}>{props.chal.name}</DialogTitle>
       <DialogContent theme={["primary", "onSurface"]}>
+        <div className={css.chalHeader}>
+          <h1 className={css.chalName}>
+            {props.chal.name}
+          </h1>
+          <h2 className={css.chalValue}>
+            {props.chal.value}
+          </h2>
+        </div>
+        {claimed}
         {netcat}
+        {files}
       </DialogContent>
       <DialogActions>
-        <DialogButton action="close">Cancel</DialogButton>
-        <DialogButton action="accept" isDefaultAction>
-          Download
-        </DialogButton>
+        <DialogButton action="close">Download All</DialogButton>
+        <DialogButton action="accept" isDefaultAction>Done</DialogButton>
       </DialogActions>
     </Dialog>
 
@@ -53,7 +78,7 @@ function Challenge(props) {
       <ReactMarkdown className={""} source={props.chal.description} />
       <div className={css.chalFooter}>
         <Button raised theme={['secondaryBg', 'onSecondary']} ripple={{accent: true}} onClick={() => {setDetailsOpen(true)}}>Details</Button>
-        <Button raised ripple={{accent: true}}>Claim</Button>
+        {actionButton}
       </div>
     </div>
   </>)
