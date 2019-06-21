@@ -1,6 +1,8 @@
 const withSass = require('@zeit/next-sass')
 const withOffline = require('next-offline')
 
+const cssLoaderConfig = require("@zeit/next-css/css-loader-config");
+
 module.exports = module.exports = withOffline(withSass({
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (!defaultLoaders) {
