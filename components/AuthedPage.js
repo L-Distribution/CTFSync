@@ -4,19 +4,39 @@ import Head from 'next/head'
 import Link from 'next/link'
 import {Drawer, DrawerHeader, DrawerTitle, DrawerContent} from '@rmwc/drawer'
 import {List, ListItem} from '@rmwc/list'
+import {Button} from '@rmwc/button'
 import {IconButton} from '@rmwc/icon-button'
 
 import '@material/drawer/dist/mdc.drawer.css'
 import '@material/list/dist/mdc.list.css'
+import '@material/button/dist/mdc.button.css';
 import '@material/icon-button/dist/mdc.icon-button.css';
 
 import css from "./styles/authedPage.scss"
 import MenuIcon from "./icons/material-icons/menu.svg";
+import AddIcon from "./icons/material-icons/add.svg";
 
 import firebase from 'firebase'
+import "firebase/firestore"
 
 function AuthedPage(props) {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [db] = React.useState(firebase.firestore())
+  const [ctfs, setCTFs] = React.useState([])
+
+  React.useEffect(() => {
+    db.collection('ctfs').onSnapshot(snapshot => {
+      let res = []
+
+      snapshot.forEach(doc => {
+        res.push(doc.data())
+      })
+
+      setCTFs(res)
+    })
+  }, [])
+
+  const ctfList = ctfs.map((e, i) => <ListItem key={i}>{e.name}</ListItem>)
 
   return (<>
     <Drawer modal open={drawerOpen} onClose={() => setDrawerOpen(false)} theme={["surface"]}>
@@ -24,8 +44,19 @@ function AuthedPage(props) {
         <DrawerTitle>CTFSync</DrawerTitle>
       </DrawerHeader>
       <DrawerContent>
+        <Button label={"Add CTF"} icon={<AddIcon/>} onClick={() => {
+          db.collection("ctfs").add({
+            name: "HSCTF 2019",
+            url: "https://ctf.hsctf.com",
+            dataFetched: false
+          }).then(docRef => {
+            console.log(docRef.id)
+          }).catch(e => {
+            console.log(e)
+          })
+        }}/>
         <List>
-          <ListItem>HSCTF 2019</ListItem>
+          {ctfList}
         </List>
       </DrawerContent>
     </Drawer>
@@ -45,5 +76,4 @@ function AuthedPage(props) {
     </div>
   </>)
 }
-
 export default AuthedPage

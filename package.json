@@ -1,5 +1,5 @@
 {
-  "name": "CTFSync",
+  "name": "ctfsync",
   "version": "0.1.0",
   "main": "index.js",
   "repository": "https://github.com/L-Distribution/CTFSync.git",
