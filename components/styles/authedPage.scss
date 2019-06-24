@@ -1,7 +1,10 @@
 @import "../../pages/styles/theme";
 
 .pageContent {
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .header {
@@ -28,7 +31,8 @@
 :global(.mdc-drawer) {
   background-color: var(--mdc-theme-background);
 
-  :global(.mdc-drawer__title), :global(.mdc-list-item) {
+  :global(.mdc-drawer__title),
+  :global(.mdc-list-item) {
     color: var(--mdc-theme-on-surface);
   }
 }
