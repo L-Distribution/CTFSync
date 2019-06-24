@@ -31,17 +31,24 @@ function AuthedPage(props) {
       let res = []
 
       snapshot.forEach(doc => {
-        res.push(doc.data())
+        res.push({
+          id: doc.id,
+          ...doc.data()
+        })
       })
 
       setCTFs(res)
     })
   }, [])
 
-  const ctfList = ctfs.map((c, i) => <ListItem key={i} className={css.ctfListItem}>
-    <p>{c.name}</p>
-    {c.dataFetched ? <></> : <CircularProgress/>}
-  </ListItem>)
+  const ctfList = ctfs.map((c, i) => <Link as={`/ctf/${c.id}`} as={`/ctf/${c.id}`} href={`/ctf?id=${c.id}`}>
+    <a>
+      <ListItem key={i} className={css.ctfListItem}>
+        <p>{c.name}</p>
+        {c.dataFetched ? <></> : <CircularProgress/>}
+      </ListItem>
+    </a>
+  </Link>)
 
   return (<>
     <Drawer modal open={drawerOpen} onClose={() => setDrawerOpen(false)} theme={["surface"]}>

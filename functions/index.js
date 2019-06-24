@@ -53,6 +53,7 @@ exports.scrapeChals = functions.firestore.document('/ctfs/{ctfId}').onCreate(asy
     hints: c.hints || [],
     category: c.category || "",
     value: c.value || 0,
+    name: c.name || "",
     raw: c
   }))
 
