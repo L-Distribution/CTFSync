@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@rmwc/button": "^5.5.2",
+    "@rmwc/circular-progress": "^5.5.2",
     "@rmwc/dialog": "^5.5.2",
     "@rmwc/drawer": "^5.5.2",
     "@rmwc/icon-button": "^5.5.2",

@@ -6,11 +6,13 @@ import {Drawer, DrawerHeader, DrawerTitle, DrawerContent} from '@rmwc/drawer'
 import {List, ListItem} from '@rmwc/list'
 import {Button} from '@rmwc/button'
 import {IconButton} from '@rmwc/icon-button'
+import {CircularProgress} from '@rmwc/circular-progress'
 
 import '@material/drawer/dist/mdc.drawer.css'
 import '@material/list/dist/mdc.list.css'
 import '@material/button/dist/mdc.button.css';
 import '@material/icon-button/dist/mdc.icon-button.css';
+import '@rmwc/circular-progress/circular-progress.css';
 
 import css from "./styles/authedPage.scss"
 import MenuIcon from "./icons/material-icons/menu.svg";
@@ -36,7 +38,10 @@ function AuthedPage(props) {
     })
   }, [])
 
-  const ctfList = ctfs.map((e, i) => <ListItem key={i}>{e.name}</ListItem>)
+  const ctfList = ctfs.map((c, i) => <ListItem key={i} className={css.ctfListItem}>
+    <p>{c.name}</p>
+    {c.dataFetched ? <></> : <CircularProgress/>}
+  </ListItem>)
 
   return (<>
     <Drawer modal open={drawerOpen} onClose={() => setDrawerOpen(false)} theme={["surface"]}>

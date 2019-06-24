@@ -32,3 +32,9 @@
     color: var(--mdc-theme-on-surface);
   }
 }
+
+.ctfListItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

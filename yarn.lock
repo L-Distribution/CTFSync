@@ -1229,6 +1229,14 @@
     "@rmwc/ripple" "^5.5.2"
     "@rmwc/types" "^5.5.2"
 
+"@rmwc/circular-progress@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/@rmwc/circular-progress/-/circular-progress-5.5.2.tgz#47af2e18fc611fb8dca4414046faa7dbf3b2abe6"
+  integrity sha512-MhxIC2tv63oEtQBaV3j8Y6FncRWj/zJMBGJUyFIIqxYH2e5E3pAkRnGu58NoPD9AnnhNJL9cKxfgUkq4EJkbYA==
+  dependencies:
+    "@rmwc/base" "^5.5.2"
+    "@rmwc/types" "^5.5.2"
+
 "@rmwc/dialog@^5.5.2":
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/@rmwc/dialog/-/dialog-5.5.2.tgz#63b9873b0f06eee18fec7c448e883ca3512f368d"
