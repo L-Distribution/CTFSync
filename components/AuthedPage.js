@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -20,7 +20,7 @@ import '@material/floating-label/dist/mdc.floating-label.css';
 import '@material/notched-outline/dist/mdc.notched-outline.css';
 import '@material/line-ripple/dist/mdc.line-ripple.css';
 
-import css from "./styles/authedPage.scss"
+import css from "./styles/authedPage.scss";
 import MenuIcon from "./icons/material-icons/menu.svg";
 import AddIcon from "./icons/material-icons/add.svg";
 
@@ -54,19 +54,19 @@ function AuthedPage(props) {
   }, [props.router.pathname, props.router.query])
 
   React.useEffect(() => {
-    db.collection('ctfs').onSnapshot(snapshot => {
-      let res = []
+    db.collection("ctfs").onSnapshot(snapshot => {
+      let res = [];
 
       snapshot.forEach(doc => {
         res.push({
           id: doc.id,
           ...doc.data()
-        })
-      })
+        });
+      });
 
-      setCTFs(res)
-    })
-  }, [])
+      setCTFs(res);
+    });
+  }, []);
 
   const ctfList = ctfs.map((c, i) => {
     console.log(queryString)
@@ -90,7 +90,7 @@ function AuthedPage(props) {
           }}
       >
           <DialogContent theme={["onSurface"]}>
-            urgay
+              <TextField/>
           </DialogContent>
           <DialogActions>
             <DialogButton action="close">Download All</DialogButton>
@@ -110,19 +110,23 @@ function AuthedPage(props) {
       </DrawerContent>
     </Drawer>
 
-    <Head>
-      <title>yay a title</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-    </Head>
-    <header className={css.header}>
-      <IconButton className={css.menuIcon} icon={<MenuIcon/>} label="Open menu" onClick={() => setDrawerOpen(true)} />
-      <Link href="/">
-        <div className={css.siteName}>CTFSync</div>
-      </Link>
-    </header>
-    <div className={css.pageContent}>
-      {props.children}
-    </div>
-  </>)
+      <Head>
+        <title>yay a title</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+      </Head>
+      <header className={css.header}>
+        <IconButton
+          className={css.menuIcon}
+          icon={<MenuIcon />}
+          label="Open menu"
+          onClick={() => setDrawerOpen(true)}
+        />
+        <Link href="/">
+          <div className={css.siteName}>CTFSync</div>
+        </Link>
+      </header>
+      <div className={css.pageContent}>{props.children}</div>
+    </>
+  );
 }
 export default withRouter(AuthedPage)
