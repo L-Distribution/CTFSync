@@ -31,21 +31,21 @@ function hashStream (stream) {
   })
 }
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
- response.send("Hello from Firebase!");
-});
-
 exports.scrapeChals = functions.firestore.document('/ctfs/{ctfId}').onCreate(async (snap, context) => {
   const ctf = snap.data();
 
   if (ctf.dataFetched) return null
 
   const scraper = new CTFdScraper(ctf.url)
-  scraper.authenticate({
-    "cookie": "censored"
-  })
+  scraper.authenticate(ctf.auth || {})
 
-  let chals = await scraper.getChals()
+  let chals
+  try {
+    chals = await scraper.getChals()
+  } catch (e) {
+    return snap.ref.set({ dataFetched: "authNeeded" }, {merge: true})
+  }
+
   chals = chals.map(c => ({
     files: c.files || [],
     description: c.description || "",
