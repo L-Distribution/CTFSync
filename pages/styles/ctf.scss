@@ -6,10 +6,15 @@
   grid-template-columns: repeat(auto-fit, minmax(288px, max-content));
   grid-auto-flow: row;
 }
+
 .searchWrap {
   display: flex;
   * {
     margin-right: 16px;
   }
   margin: 16px 0px 16px 0px;
+}
+
+:global(.mdc-text-field--focused):not(.mdc-text-field--disabled) :global(.mdc-floating-label) {
+  color: white !important;
 }

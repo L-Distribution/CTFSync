@@ -1,0 +1,10 @@
+@import "../../pages/styles/theme";
+
+.dialogWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+:global(.mdc-text-field--focused):not(.mdc-text-field--disabled) :global(.mdc-floating-label) {
+  color: white !important;
+}

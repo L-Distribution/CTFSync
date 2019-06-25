@@ -68,19 +68,18 @@ function CTF(props) {
     if (dataFetched) {
       // temp vars
       let searchChalTemp = [];
-      let searchValTemp = searchVal.replace(/\s+/g, "").toLowerCase();
+      let searchValTemp = (searchVal || "").replace(/\s+/g, "").toLowerCase();
       searchChalTemp = chals.filter((chal, i) => {
         let nameTemp = chal.name.replace(/\s+/g, "").toLowerCase();
 
         if (
-          (searchVal == "" || nameTemp.indexOf(searchValTemp) > -1) &&
-          (categoryVal == "" || categoryVal == chal.category)
+          (searchVal === "" || nameTemp.indexOf(searchValTemp) > -1) &&
+          (categoryVal === "" || categoryVal === chal.category)
         ) {
           return true;
         }
         return false;
       });
-      console.log(searchChalTemp);
       setSearchChal(searchChalTemp);
     }
   }, [searchVal, categoryVal, dataFetched, chals, categories]);
