@@ -59,7 +59,7 @@ function AuthedPage(props) {
       <a>
         <ListItem key={i} className={css.ctfListItem} activated={queryString && queryString.id === c.id && path === "/ctf"}>
           <p>{c.name}</p>
-          {c.dataFetched ? <></> : <CircularProgress/>}
+          {(c.dataFetched || c.dataFetched === "authNeeded") ? <></> : <CircularProgress/>}
         </ListItem>
       </a>
     </Link>

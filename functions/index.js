@@ -31,10 +31,13 @@ function hashStream (stream) {
   })
 }
 
-exports.scrapeChals = functions.firestore.document('/ctfs/{ctfId}').onCreate(async (snap, context) => {
-  const ctf = snap.data();
+exports.scrapeChals = functions.firestore.document('/ctfs/{ctfId}').onWrite(async (change, context) => {
+  const ctf = change.after.data();
 
-  if (ctf.dataFetched) return null
+  console.log(ctf.dataFetched)
+  console.log(ctf.auth)
+  console.log((ctf.dataFetched && ctf.dataFetched !== "authNeeded") || (ctf.dataFetched === "authNeeded" && !ctf.auth))
+  if ((ctf.dataFetched && ctf.dataFetched !== "authNeeded") || (ctf.dataFetched === "authNeeded" && !ctf.auth)) return null
 
   const scraper = new CTFdScraper(ctf.url)
   scraper.authenticate(ctf.auth || {})
@@ -43,7 +46,7 @@ exports.scrapeChals = functions.firestore.document('/ctfs/{ctfId}').onCreate(asy
   try {
     chals = await scraper.getChals()
   } catch (e) {
-    return snap.ref.set({ dataFetched: "authNeeded" }, {merge: true})
+    return  change.after.ref.set({ dataFetched: "authNeeded" }, {merge: true})
   }
 
   chals = chals.map(c => ({
@@ -57,7 +60,7 @@ exports.scrapeChals = functions.firestore.document('/ctfs/{ctfId}').onCreate(asy
     raw: c
   }))
 
-  const chalCollection = snap.ref.collection('chals')
+  const chalCollection = change.after.ref.collection('chals')
 
   await Promise.all(chals.map(async c => {
     c.files = await Promise.all([...c.files.map(async f => {
@@ -79,5 +82,5 @@ exports.scrapeChals = functions.firestore.document('/ctfs/{ctfId}').onCreate(asy
     return chalCollection.add(c)
   }))
 
-  return snap.ref.set({ dataFetched: true }, {merge: true})
+  return change.after.ref.set({ dataFetched: true }, {merge: true})
 });

@@ -2,12 +2,13 @@ import {Dialog, DialogActions, DialogButton, DialogContent} from "@rmwc/dialog";
 import css from "./styles/addDialog.scss";
 import {TextField} from "@rmwc/textfield";
 import React from "react";
+import { withRouter } from 'next/router'
 import {Button} from "@rmwc/button";
 import AddIcon from "./icons/material-icons/add.svg";
 import firebase from "firebase";
 import {CircularProgress} from "@rmwc/circular-progress";
 
-export default function () {
+export default withRouter(function (props) {
     const [addOpen, setAddOpen] = React.useState(false)
     const [authOpen, setAuthOpen] = React.useState(false)
     const [spinnerOpen, setSpinnerOpen] = React.useState(false)
@@ -31,6 +32,7 @@ export default function () {
                 } else if (data.dataFetched === true) {
                     setSpinnerOpen(false)
                     setAuthOpen(false)
+                    props.router.push(`/ctf?id=${ctfDocument.id}`, `/ctf/${ctfDocument.id}`)
                 }
             })
         }
@@ -125,4 +127,4 @@ export default function () {
             </DialogActions>
         </Dialog>
     </>)
-}
+})
